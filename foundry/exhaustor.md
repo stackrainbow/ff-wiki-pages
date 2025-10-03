@@ -2,7 +2,7 @@
 title: Idea Exhaustor
 description: Feedforward Foundry
 published: true
-date: 2025-10-03T19:13:30.286Z
+date: 2025-10-03T19:14:44.662Z
 tags: 
 editor: markdown
 dateCreated: 2025-10-03T19:08:04.429Z
