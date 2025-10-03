@@ -2,26 +2,23 @@
 title: Idea Exhaustor
 description: Feedforward Foundry
 published: true
-date: 2025-10-03T19:08:04.429Z
+date: 2025-10-03T19:09:14.738Z
 tags: 
 editor: markdown
 dateCreated: 2025-10-03T19:08:04.429Z
 ---
 
 # The Idea Exhaustor: A Scientific Approach to Exploring Solution Spaces
-
-## Overview
-
 The Idea Exhaustor is a system that estimates when an AI model + prompt combination has exhausted its ability to generate meaningfully distinct ideas. By borrowing concepts from **ecological biodiversity assessment**, it can predict the total "idea space" available to a given configuration and track progress toward exhausting that space. Instead of having to guess when you are done using an LLM for research, we can estimate how many more ideas the system might be able to create.
 
-### Theory
-#### The Ecological Inspiration: Species Richness Estimation
+## Theory
+### The Ecological Inspiration: Species Richness Estimation
 
 Imagine you're a field biologist studying butterflies in a forest. You catch 100 butterflies and identify 30 different species. The fundamental question: **How many total species exist in this forest that you haven't caught yet?**
 
 This is the **species richness estimation problem**. You've observed a sample, but the true population remains hidden. Ecologists developed clever statistical methods to estimate total richness from incomplete sampling.
 
-#### The Chao1 Estimator
+### The Chao1 Estimator
 
 Chao (1984) developed an elegant estimator based on a simple insight: **the frequency of rare species tells us about unobserved species**.
 
@@ -52,9 +49,9 @@ While recent research has confirmed that AI systems can generate high-quality id
 
 This motivates the Idea Exhaustor's approach: **track idea clusters over time to estimate when you've explored the accessible idea space**.
 
-## How the Estimator Works
+# How the Estimator Works
 
-### Step 1: Clustering Ideas by Similarity
+## Step 1: Clustering Ideas by Similarity
 
 Each generated idea is:
 1. **Embedded** into a high-dimensional vector using OpenAI's `text-embedding-3-small`
@@ -63,7 +60,7 @@ Each generated idea is:
 
 This clustering creates our "species" – groups of conceptually similar ideas. Of course, other choices for embedding models and thresholds are possible.
 
-### Step 2: Tracking the Frequency Spectrum
+## Step 2: Tracking the Frequency Spectrum
 
 The system maintains a count for each cluster:
 - Cluster A: 5 ideas (seen 5 times)
@@ -78,7 +75,7 @@ From these counts, we compute:
 - **f₁** = clusters with count = 1
 - **f₂** = clusters with count = 2
 
-### Step 3: Applying Chao1
+## Step 3: Applying Chao1
 
 With these statistics, we estimate the total cluster richness:
 
@@ -91,7 +88,7 @@ def chao1_estimator(u: int, f1: int, f2: int) -> float:
 
 This gives us **T̂** – the estimated total number of distinct idea clusters in the complete idea space.
 
-### Step 4: Computing Exhaustion
+## Step 4: Computing Exhaustion
 
 **Exhaustion percentage** = (u / T̂) × 100
 
@@ -99,9 +96,9 @@ This tells us: "We've observed **u** clusters out of an estimated **T̂** total 
 
 When exhaustion exceeds the user's threshold (default 95%), the system stops generating – it has effectively "exhausted" the idea space for this configuration.
 
-## Implementation Guide
+# Implementation Guide
 
-### Architecture Overview
+## Architecture Overview
 
 The system has three main components:
 
@@ -109,9 +106,9 @@ The system has three main components:
 2. **Clustering Engine**: Groups similar ideas using embeddings
 3. **Exhaustion Calculator**: Applies Chao1 to estimate progress
 
-### Core Implementation
+## Core Implementation
 
-#### 1. Clustering with Representatives
+### 1. Clustering with Representatives
 
 ```python
 clusters: list[dict] = []  # Each: {key, rep_emb, count}
@@ -142,7 +139,7 @@ def assign_cluster(emb: List[float]) -> str:
 
 We compare against the **first idea's embedding** (representative), not a centroid. This is faster and works well for tight clusters but other implementations are possible. See Cox et al. (2021) for a broader discussion.
 
-#### 2. Exhaustion Calculation
+### 2. Exhaustion Calculation
 
 ```python
 def compute_exhaustion():
@@ -169,7 +166,7 @@ def compute_exhaustion():
     }
 ```
 
-#### 3. Retain History
+### 3. Retain History
 
 The system keeps the current ideation history to encourage novelty:
 
@@ -196,7 +193,7 @@ def build_prompt(query: str, batch_size: int, prior: list[str]) -> str:
 
 This helps the LLM avoid repetition by explicitly showing what's already been generated.
 
-#### 4. Cosine Similarity
+### 4. Cosine Similarity
 
 ```python
 def cosine(a, b):
@@ -206,7 +203,7 @@ def cosine(a, b):
     return float(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)))
 ```
 
-#### 5. Main Generation Loop
+### 5. Main Generation Loop
 
 ```python
 async def generate_with_exhaustion(query: str, batch_size: int, 
@@ -242,7 +239,7 @@ async def generate_with_exhaustion(query: str, batch_size: int,
     return all_ideas, compute_exhaustion()[1]
 ```
 
-### Configuration Parameters
+## Configuration Parameters
 
 - **batch_size** (default: 25): Ideas generated per LLM call
 - **similarity_threshold** (default: 0.95 = 95%): Exhaustion % to stop at
@@ -254,7 +251,7 @@ async def generate_with_exhaustion(query: str, batch_size: int,
 - **Higher similarity threshold** (98%): Slower, more ideas, diminishing returns
 - **Sweet spot**: 90-95% balances coverage and efficiency
 
-## Interpreting the Statistics
+# Interpreting the Statistics
 
 When the system reports:
 
@@ -272,7 +269,7 @@ This means:
 
 The high f1 count (18 singletons) suggests there's still room to explore – many themes appeared only once. As generation continues, f1 should decrease (rare themes get revisited) and exhaustion should increase.
 
-## Example Session
+# Example Session
 
 ```
 Query: "New features for a task management app"
@@ -292,11 +289,7 @@ Batch 9: N=225, u=91, f1=18, f2=20, T̂=94, Exhaustion=97%
 
 The system generated 225 ideas across 91 conceptual clusters, exhausting an estimated 97% of the idea space for this LLM + prompt configuration.
 
-## Conclusion
-
-By treating idea generation as an ecological sampling problem, the Idea Exhaustor provides a principled way to measure creative exhaustion and capture the diminishing returns of continued ideation. This allows users to optimize their brainstorming process – knowing when they've genuinely exhausted a prompt's potential versus just scratching the surface.
-
-## References
+# References
 ```markdown
 Chao, A. (1984). Nonparametric Estimation of the Number of Classes in a Population. *Scandinavian Journal of Statistics*, 11(4), 265-270. https://www.jstor.org/stable/4615964
 
