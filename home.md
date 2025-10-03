@@ -2,7 +2,7 @@
 title: Home
 description: Feedforward Foundry
 published: true
-date: 2025-10-03T17:22:23.769Z
+date: 2025-10-03T17:22:38.361Z
 tags: 
 editor: markdown
 dateCreated: 2025-10-03T15:21:47.402Z
