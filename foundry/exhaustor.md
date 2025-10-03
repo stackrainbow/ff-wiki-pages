@@ -2,7 +2,7 @@
 title: Idea Exhaustor
 description: Feedforward Foundry
 published: true
-date: 2025-10-03T19:23:34.603Z
+date: 2025-10-03T19:56:02.747Z
 tags: 
 editor: markdown
 dateCreated: 2025-10-03T19:08:04.429Z
@@ -95,6 +95,7 @@ This tells us: "We've observed **u** clusters out of an estimated **T̂** total 
 When exhaustion exceeds the user's threshold (default 95%), the system stops generating – it has effectively "exhausted" the idea space for this configuration.
 
 # Implementation Guide
+You can follow our reference implementation for the Idea Exhaustor. All parameters are carefully chosen for the specific models used and may require recalibration if you choose to use others.
 
 ## Architecture Overview
 
@@ -105,7 +106,6 @@ The system has three main components:
 3. **Exhaustion Calculator**: Applies Chao1 to estimate progress
 
 ## Core Implementation
-You can follow our reference implementation for the Idea Exhaustor. All parameters are carefully chosen for the specific models used and may require recalibration if you choose to use others.
 
 ### 1. Clustering with Representatives
 
