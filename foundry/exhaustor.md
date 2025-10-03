@@ -2,14 +2,14 @@
 title: Idea Exhaustor
 description: Feedforward Foundry
 published: true
-date: 2025-10-03T19:56:02.747Z
+date: 2025-10-03T23:38:22.560Z
 tags: 
 editor: markdown
 dateCreated: 2025-10-03T19:08:04.429Z
 ---
 
 # The Idea Exhaustor: A Scientific Approach to Exploring Solution Spaces
-The Idea Exhaustor is a system that estimates when an AI model + prompt combination has exhausted its ability to generate meaningfully distinct ideas. By borrowing concepts from **ecological biodiversity assessment**, it can predict the total "idea space" available to a given configuration and track progress toward exhausting that space. Instead of having to guess when you are done using an LLM for research, we can estimate how many more ideas the system might be able to create.
+The Idea Exhaustor is a system that estimates when an AI model + prompt combination has exhausted its ability to generate meaningfully distinct ideas. By borrowing concepts from ecological biodiversity assessment, it can predict the total "idea space" available to a given configuration and track progress toward exhausting that space. Instead of having to guess when you are done using an LLM for research, we can estimate how many more ideas the system might be able to create.
 
 ## Theory
 Imagine you're a field biologist studying butterflies in a forest. You catch 100 butterflies and identify 30 different species. The fundamental question: **How many total species exist in this forest that you haven't caught yet?**
