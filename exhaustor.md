@@ -2,7 +2,7 @@
 title: Idea Exhaustor
 description: Feedforward Foundry
 published: true
-date: 2025-10-03T19:09:14.738Z
+date: 2025-10-03T19:13:30.286Z
 tags: 
 editor: markdown
 dateCreated: 2025-10-03T19:08:04.429Z
@@ -12,8 +12,6 @@ dateCreated: 2025-10-03T19:08:04.429Z
 The Idea Exhaustor is a system that estimates when an AI model + prompt combination has exhausted its ability to generate meaningfully distinct ideas. By borrowing concepts from **ecological biodiversity assessment**, it can predict the total "idea space" available to a given configuration and track progress toward exhausting that space. Instead of having to guess when you are done using an LLM for research, we can estimate how many more ideas the system might be able to create.
 
 ## Theory
-### The Ecological Inspiration: Species Richness Estimation
-
 Imagine you're a field biologist studying butterflies in a forest. You catch 100 butterflies and identify 30 different species. The fundamental question: **How many total species exist in this forest that you haven't caught yet?**
 
 This is the **species richness estimation problem**. You've observed a sample, but the true population remains hidden. Ecologists developed clever statistical methods to estimate total richness from incomplete sampling.
@@ -50,7 +48,7 @@ While recent research has confirmed that AI systems can generate high-quality id
 This motivates the Idea Exhaustor's approach: **track idea clusters over time to estimate when you've explored the accessible idea space**.
 
 # How the Estimator Works
-
+This section describes how the Idea Exhaustor works on high-level including a few code snippets.
 ## Step 1: Clustering Ideas by Similarity
 
 Each generated idea is:
@@ -107,6 +105,7 @@ The system has three main components:
 3. **Exhaustion Calculator**: Applies Chao1 to estimate progress
 
 ## Core Implementation
+You can follow our reference implementation for the Idea Exhaustor. All parameters are carefully chosen for the specific models used and may require recalibration if you choose to use others.
 
 ### 1. Clustering with Representatives
 
