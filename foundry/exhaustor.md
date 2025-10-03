@@ -2,7 +2,7 @@
 title: Idea Exhaustor
 description: Feedforward Foundry
 published: true
-date: 2025-10-03T19:14:44.662Z
+date: 2025-10-03T19:23:34.603Z
 tags: 
 editor: markdown
 dateCreated: 2025-10-03T19:08:04.429Z
@@ -40,7 +40,7 @@ T̂ = u + f₁(f₁ - 1) / 2
 
 **The intuition:** If you're seeing many singletons, you're likely missing many unobserved species. The ratio between singletons and doubletons captures your sampling intensity – high f₁ relative to f₂ suggests shallow coverage.
 
-#### From Butterflies to Ideas
+### From Butterflies to Ideas
 An LLM + prompt is an **idea generation function** f(prompt) → ideas. Just as a forest has finite species diversity, this function has a finite capacity to generate distinct ideas before it begins repeating itself in subtle ways.
 
 While recent research has confirmed that AI systems can generate high-quality ideas, they struggle with diversity (Dell'Acqua et al., 2023; Meincke et al., 2025). Ideas tend to cluster too tightly, limiting variance in the ideation process which reduces the chances for a breakout idea. As Kornish and Ulrich (2011) demonstrated in their empirical analysis of large idea samples, the lessons from ecology can be applied to ideeation as well and Meincke, Mollick, and Terwiesch (2024) applied the logic to LLM-based exploration for the first time.
