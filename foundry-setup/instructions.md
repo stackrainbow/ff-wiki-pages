@@ -2,7 +2,7 @@
 title: Instructions
 description: Feedforward Foundry
 published: true
-date: 2025-10-04T17:20:26.578Z
+date: 2025-10-06T09:38:52.286Z
 tags: 
 editor: markdown
 dateCreated: 2025-10-03T20:18:41.059Z
@@ -57,6 +57,7 @@ The Foundry consists of six interconnected services:
 
 - **api**: Main Foundry application server, which is based on Librechat, listens on port 3080.
 - **foundry_mcp**: MCP (Model Context Protocol) server for agent creation, listens on port 8123.
+- **exhaustor**: The Idea Exhaustor, which has a seperate User Interface.
 - **mongodb**: Database for storing conversations and user data
 - **meilisearch**: Search engine for message indexing
 - **vectordb**: PostgreSQL with pgvector for RAG (Retrieval-Augmented Generation)
