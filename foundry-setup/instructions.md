@@ -2,7 +2,7 @@
 title: Instructions
 description: Feedforward Foundry
 published: true
-date: 2025-10-06T09:38:52.286Z
+date: 2025-10-06T10:57:30.038Z
 tags: 
 editor: markdown
 dateCreated: 2025-10-03T20:18:41.059Z
@@ -40,6 +40,7 @@ For testing and as an example deployment, this guide shows you how to get the Fo
 3. **Edit `.env` file** with your settings:
    - Set `APP_TITLE` to your desired application name
    - Add your `OPENAI_API_KEY` (required)
+   - Add your `ANTHROPIC_API_KEY` (required)
    - Optionally add other LLM provider API keys (Anthropic, Google, etc.)
    
 4. **Start the Foundry**
