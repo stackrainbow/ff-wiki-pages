@@ -2,7 +2,7 @@
 title: Environment Variables
 description: 
 published: true
-date: 2025-10-06T09:56:21.405Z
+date: 2025-10-06T10:58:15.071Z
 tags: 
 editor: markdown
 dateCreated: 2025-10-06T09:56:21.405Z
@@ -17,6 +17,7 @@ The following environment variables are shared between the Foundry API service, 
 | -------- | ------- | ------- |
 | MAC_KEY | Used to securely share data between the services<br>See .env.example for generation instructions. | - |
 | OPENAI_API_KEY | OpenAI AI key, used by Foundry API, MCP, Exhaustor | - |
+| ANTHROPIC_API_KEY | Anthropic API key, used by Foundry API (by default, Agents created by Foundry API/MCP use Claude) | - |
 | COOKIE_INSECURE | For localhost deployments, don't send secure for cookies.<br>Omit in production | - |
 | FOUNDRY_EXHAUSTOR_URL | The client visible URL to your exhaustor instance. | - |
 # Exhaustor
