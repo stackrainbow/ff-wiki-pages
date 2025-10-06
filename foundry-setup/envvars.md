@@ -1,8 +1,8 @@
 ---
 title: Environment Variables
 description: 
-published: true
-date: 2025-10-06T10:58:15.071Z
+published: false
+date: 2025-10-06T12:11:02.050Z
 tags: 
 editor: markdown
 dateCreated: 2025-10-06T09:56:21.405Z
